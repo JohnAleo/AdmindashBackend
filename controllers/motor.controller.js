@@ -1,13 +1,29 @@
 const Motor = require("../models/motor.model")
 const AddNewMotor=(req,res) =>{
     try {
-        const {name,company,location,cost,type,people,date} = req.body;
-        const newMotor= new Motor ({name,company,location,cost,type,people,date});
+        const {
+               name,
+               company,
+               location,
+               cost,
+               type,
+               people,
+               date} = req.body;
+        const newMotor= new Motor ({
+            name,
+            company,
+            location,
+            cost,
+            type,
+            people,
+            date
+        });
         newMotor.save();
-        console.log(`Add new name: ${name,company,location,cost,type,people,date},Add new Age:${name,company,location,cost,type,people,date}`);
+        console.log(`Add new name: ${name,company,location,cost,type,people,date},
+                    Add new Age:${name,company,location,cost,type,people,date}`);
         res.status(201).json({message:'Data Received', newMotor}) 
     } catch (error) {
-       res.status(400).json({message:'Error Editing Motor', error}) 
+       res.status(400).json({message:'Error Adding Motor', error}) 
     }
 
 }

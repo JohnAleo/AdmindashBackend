@@ -1,11 +1,11 @@
 const jwt =require("jsonwebtoken");
 const User = require("../models/auth.model")
 
-const protect= async(req, res, next) => {
+const protect = async(req, res, next) => {
     let token;
     if(req.headers.authorization && 
-        req.headers.authorization.startsWidth("Bearer"))
-        {
+        req.headers.authorization.startsWith("Bearer")
+    ) {
         try {
             token = req.headers.authorization.split(" ")[1];
             const decoded = jwt.verify(token, process.env.JWT_SECRET);

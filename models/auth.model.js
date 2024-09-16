@@ -13,6 +13,10 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true,
         unique:true,
+        match: [
+            /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+            "Please enter vaild Email address",
+          ],
     },
      password:{
         type: String,
@@ -39,7 +43,7 @@ UserSchema.methods.generateToken = function(){
 }
 
 UserSchema.methods.matchPassword = async function (enteredPassword) {
-    return enteredPassword === this.password
+    return await bcrypt.compare(enteredPassword, this.password) 
 }
 const User= mongoose.model("User", UserSchema)
 module.exports=User ;

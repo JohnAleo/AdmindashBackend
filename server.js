@@ -32,11 +32,7 @@ app.listen(PORT, ()=>{
 .catch((error) => {
     console.error("MonggoDB Connecting Error")
 })
-//Motor routerda ochganimiz uchun bu yerdan o'chiramiz yoki commentga olamiz
-// app.post("/api/data", (req,res)=>{
-// console.log(req.body);
-// res.sendStatus(200).send("Data received")
-// });
+
 
 
 
