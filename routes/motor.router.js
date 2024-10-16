@@ -9,8 +9,8 @@ const {
 const router=express.Router();
 
 router.post("/api/data", protect, AddNewMotor)
-router.get("/api/data",GetAllMotorData)
-router.put("/api/data/:name", EditMotor)
-router.delete("/api/data/:name",DeleteMotor)
+router.get("/api/data", protect,GetAllMotorData)
+router.put("/api/data/:name", protect, EditMotor)
+router.delete("/api/data/:name", protect, DeleteMotor)
 module.exports = router
  

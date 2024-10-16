@@ -5,23 +5,29 @@ const motorSchema=new mongoose.Schema({
         required:true,
         unique:true,
     },
-    company:{
-        type:String,
-        // required:true,
-        // unique:true,
-    },
     cost:{
         type:Number,
         // required:true,
         // unique:true,
     },
-    people:{
-        type:Number,
+    company:{
+        type:String,
         // required:true,
         // unique:true,
     },
+    license:{
+        type:String,
+        // required:true,
+        // unique:true,
+    },
+
     location:{
         type:String,
+        // required:true,
+        // unique:true,
+    },
+    people:{
+        type:Number,
         // required:true,
         // unique:true,
     },

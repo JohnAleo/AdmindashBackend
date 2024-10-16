@@ -3,24 +3,26 @@ const AddNewMotor=(req,res) =>{
     try {
         const {
                name,
-               company,
-               location,
                cost,
-               type,
+               company,
+               license,
+               location,
                people,
+               type, 
                date} = req.body;
         const newMotor= new Motor ({
             name,
-            company,
-            location,
             cost,
-            type,
+            company,
+            license,
+            location,
             people,
+            type,
             date
         });
         newMotor.save();
-        console.log(`Add new name: ${name,company,location,cost,type,people,date},
-                    Add new Age:${name,company,location,cost,type,people,date}`);
+        console.log(`Add new name: ${name,cost,company,license,location,people,type,date},
+                    Add new Age:${name,cost,company,license,location,people,type,date}`);
         res.status(201).json({message:'Data Received', newMotor}) 
     } catch (error) {
        res.status(400).json({message:'Error Adding Motor', error}) 
@@ -46,26 +48,28 @@ const EditMotor= async (req,res) =>{
         const {name}=req.params;
         const {
             newName,
-            newCompany,  
+            newCost,
+            newCompany,
+            newLicense,  
             newLocation, 
-            newCost, 
+            newPeople,
             newType, 
-            newDate, 
-            newPeople
+            newDate,     
         }=req.body;
         const motor = await Motor.findOne({ name });
         if (motor) {
             motor.name = newName || motor.name;
-            motor.company = newCompany || motor.company;
-            motor.location= newLocation|| motor.location;
             motor.cost= newCost || motor.cost;
+            motor.company = newCompany || motor.company;
+            motor.license= newLicense|| motor.license;
+            motor.location= newLocation|| motor.location;
+            motor.people= newPeople || motor.people;
             motor.type= newType || motor.type;
             motor.date= newDate || motor.date
-            motor.people= newPeople || motor.people;
             
             await motor.save();
             console.log(
-                `Edited name ${name,company,location,cost,type,people,date}, to new name: ${motor.name,motor.company,motor.location,motor.cost,motor.type,motor.date,motor.people}` 
+                `Edited name ${name,cost,company,license,location,people,type,date}, to new name: ${motor.name,motor.company,motor.location,motor.cost,motor.type,motor.date,motor.people}` 
             );
             res.status(200).json({message:`Updated Data`, motor});
         } else{
