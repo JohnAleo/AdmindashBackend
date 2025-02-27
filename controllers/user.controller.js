@@ -2,7 +2,7 @@
 const User = require ("../models/auth.model");
 const jwt= require("jsonwebtoken")
 const generateToken = (id)=>{
-  return jwt.sign({id}, "shhhhh",{
+  return jwt.sign({id}, "mySuperSecretKey123",{
         expiresIn:"30d"
     } )
 }
